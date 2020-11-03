@@ -3,8 +3,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 
 export default class LoginPage extends React.Component {
   state={
-    email:"",
-    password:""
+    email:""
   }
   render(){
     return (
@@ -19,23 +18,12 @@ export default class LoginPage extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({email:text})}/>
         </View>
-        <View style = {styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            secureTextEntry={true}
-            placeholder="Password.."
-            placeholderTextColor="#003f5c"
-            onChangeText={text => this.setState({password:text})} />
-        </View>
-          <TouchableOpacity>
-            <Text style={styles.forgot}>Forgot Password?</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>LOGIN</Text>
-          </TouchableOpacity>
-           <TouchableOpacity>
-            <Text style={styles.loginText}>Signup</Text>
-          </TouchableOpacity>
+        <Text style={styles.info}>
+          An E-mail will be sent to you shortly to reset your password
+        </Text>
+        <TouchableOpacity style={styles.resetBtn}>
+          <Text style={styles.loginText}>Reset Password</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -68,18 +56,22 @@ const styles = StyleSheet.create({
     height:50,
     color:"white"
   },
-  forgot:{
-    color:"black",
-    fontSize:11
+  info:{
+    height:11,
+    alignItems:"center",
+    justifyContent:"center",
+    borderLeftWidth:50,
+    borderRightWidth:50,
+    borderColor:"white"
   },
-  loginBtn:{
+  resetBtn:{
     width:"80%",
     backgroundColor:"#fb5b5a",
     borderRadius:25,
     height:50,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:40,
+    marginTop:70,
     marginBottom:10
   },
 });

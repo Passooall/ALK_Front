@@ -3,8 +3,11 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 
 export default class LoginPage extends React.Component {
   state={
+    firstname:"",
+    lastname:"",
     email:"",
-    password:""
+    password:"",
+    re_password:""
   }
   render(){
     return (
@@ -12,6 +15,20 @@ export default class LoginPage extends React.Component {
         <Text style={styles.logo}>
             AL-K
         </Text>
+        <View style = {styles.inputView} >
+          <TextInput
+            style={styles.inputText}
+            placeholder="First Name..."
+            placeholderTextColor="#003f5c"
+            onChangeText={text => this.setState({firstname:text})}/>
+        </View>
+        <View style = {styles.inputView} >
+          <TextInput
+            style={styles.inputText}
+            placeholder="Last Name..."
+            placeholderTextColor="#003f5c"
+            onChangeText={text => this.setState({lastname:text})}/>
+        </View>
         <View style = {styles.inputView} >
           <TextInput
             style={styles.inputText}
@@ -27,14 +44,16 @@ export default class LoginPage extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({password:text})} />
         </View>
-          <TouchableOpacity>
-            <Text style={styles.forgot}>Forgot Password?</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>LOGIN</Text>
-          </TouchableOpacity>
-           <TouchableOpacity>
-            <Text style={styles.loginText}>Signup</Text>
+        <View style = {styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            secureTextEntry={true}
+            placeholder="Re-Enter Password.."
+            placeholderTextColor="#003f5c"
+            onChangeText={text => this.setState({re_password:text})} />
+        </View>     
+          <TouchableOpacity style={styles.signUpBtn}>
+            <Text style={styles.loginText}>SignUp</Text>
           </TouchableOpacity>
       </View>
     );
@@ -50,7 +69,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontWeight: "bold",
-    fontSize:50,
+    fontSize:30,
     color:"#fb5b5a",
     marginBottom:40
   },
@@ -68,11 +87,7 @@ const styles = StyleSheet.create({
     height:50,
     color:"white"
   },
-  forgot:{
-    color:"black",
-    fontSize:11
-  },
-  loginBtn:{
+  signUpBtn:{
     width:"80%",
     backgroundColor:"#fb5b5a",
     borderRadius:25,
