@@ -1,5 +1,17 @@
-screens File:
-  contains JavaScript files for each screen of the app
-  
-assets file:
-  contains png's of the images being used in the app
+assets:
+  contains pngs of the images used in the app (currently only has temporary
+  images provided by react-native)
+
+src:
+  Components:
+    stylesheet.js:
+      js code for font and button stylesheet
+  Pages:
+    ForgotPassowrd.js:
+      js code for the look of the 'forgot password' screen
+    Home.js:
+      js code for the look of the 'home' screen
+    LoginPage.js:
+      js code for the look of the 'Login page' screen
+    SignUp.js
+      js code for the look of the 'Sign Up' screen
