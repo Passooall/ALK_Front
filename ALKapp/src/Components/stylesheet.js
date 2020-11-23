@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
       color:"#fb5b5a",
       marginBottom:40
     },
+    tinyLogo: {
+        width: 100,
+        height: 100,
+        marginBottom:40
+    },
     inputView:{
       width:"80%",
       backgroundColor:"#d4d4d4",
@@ -21,24 +26,32 @@ const styles = StyleSheet.create({
       height:50,
       marginBottom:10,
       justifyContent:"center",
-      padding:20
+      padding:20,
     },
     inputText:{
       height:70,
-      color:"white"
+      color:"black"
     },
     forgot:{
       color:"black",
       fontSize:11
     },
     info:{
-        height:11,
-        alignItems:"center",
-        justifyContent:"center",
-        borderLeftWidth:50,
-        borderRightWidth:50,
-        borderColor:"white"
-      }
+      alignItems:"center",
+      justifyContent:"center",
+      borderLeftWidth:50,
+      borderRightWidth:50,
+      borderColor:"white",
+      marginLeft: 20,
+      marginTop: 10,
+      marginBottom: 10
+    },
+    forgotTitle: {
+      fontWeight: "bold",
+      fontSize: 15,
+      alignSelf: 'flex-start',
+      marginLeft: 20
+    }
     })
 
 const buttons = StyleSheet.create({
@@ -59,7 +72,7 @@ const buttons = StyleSheet.create({
         height:50,
         alignItems:"center",
         justifyContent:"center",
-        marginTop:70,
+        marginTop:60,
         marginBottom:10
       },
     signUpBtn:{
