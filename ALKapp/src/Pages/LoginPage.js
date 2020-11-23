@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { styles, buttons } from '../Components/stylesheet';
 
 export default class LoginPage extends React.Component {
@@ -10,8 +10,12 @@ export default class LoginPage extends React.Component {
   render(){
     return (
       <View style={styles.container}>
+        <Image
+          style={styles.tinyLogo}
+          source={require('../../assets/ALK_Logo.png')}
+        />
         <Text style={styles.logo}>
-            AL-K
+            Sign In
         </Text>
         <View style = {styles.inputView} >
           <TextInput
