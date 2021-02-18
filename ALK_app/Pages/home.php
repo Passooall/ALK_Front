@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+  include("connect.php");
+  include("functions.php");
+
+  $user_data = check_login($db);
+
+?>
+
 <html lang="en">
 <head>
   <title>A-LK Home</title>
@@ -22,7 +32,7 @@
               <a class="nav-link" href="#">Account Info</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="signIn.html">Log Out</a>
+                <a class="nav-link" href="logOut.php">Log Out</a>
               </li>
           </ul>
         </div>
@@ -31,7 +41,7 @@
     <div>
         <div class="text-center mb-4">
             <h1 class="mb-3 font-weight-normal" style="margin-top:100">
-                Hello
+                Hello, <?php echo $user_data['firstName']; ?>
             </h1>
         </div>
     </div>
