@@ -7,7 +7,7 @@ $database = 'antilockout';
 $db = new mysqli($server, $user, $password, $database);
 // oop   $obj->member
  if($db->connect_error) {
-     exit("Error 501\");
+     // exit("Error 501\");
  }
  else {
      // DEVELOPMENT

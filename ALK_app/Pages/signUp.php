@@ -1,5 +1,5 @@
 <?php
-session_start();
+ session_start();
 
     include("connect.php");
     include("functions.php");
@@ -11,7 +11,7 @@ session_start();
         $lastName = $_POST['lastName'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $repassword = $_POST['repassword'] 
+        $repassword = $_POST['repassword'];
 
         if(strcmp($password,$repassword)!=0)
         {
@@ -29,16 +29,17 @@ session_start();
 <html lang="en">
     <head>
         <title>A-LK Sign Up</title>
+        <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <meta name="keyword" content="alk, anti-lockout, kit, anti, lockout, car, vehicle, lock, key, facial, recognition">
         <meta name="description" content="The home page of the Anti-Lockout Kit web app">
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     </head>
   
-    <body class="text-center" style="background-color: #196fc8;">
-         <div id="box" style="margin: 600px; margin-top: 200px; padding: 100px; background-color: white;">
+    <body class="text-center" style="background-color: white;">
+         <div class="box" >
             <form class="form-signin">
-                <img class="mb-4" src="../Images/ALK_Logo.png" alt="" width="200" height="200">
+                <img class="mb-4 logo" src="../Images/ALK_Logo.png" alt="" width="200" height="200">
                 <h1 style="margin-bottom:30">Anti-Lockout Kit</h1>
                 <label for="firstName" class="sr-only">
                     First Name

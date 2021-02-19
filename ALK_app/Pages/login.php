@@ -12,44 +12,47 @@ session_start();
 
         //read from database
         $query = "select * from users where email = '$email' limit 1";
-        $result = mysqli_query($db, $query);
+        // $result = mysqli_query($db, $query);
 
-        if($result)
-        {
-            if($result && mysqli_num_rows($result) > 0)
-            {
-                $user_data = mysqli_fetch_assoc($result);
-                if($user_data['password'] == $password)
-                {
-                    $_SESSION['user_id'] = $user_data['user_id'];
-                    header("Location: home.php");
-                    die;
-                } else
-                {
-                    echo "Incorrect Password";
-                }
-            }
-        } else
-        }
-            echo "incorrect Email";
-        }
+        // if($result)
+        // {
+        //     if($result && mysqli_num_rows($result) > 0)
+        //     {
+        //         $user_data = mysqli_fetch_assoc($result);
+        //         if($user_data['password'] == $password)
+        //         {
+        //             $_SESSION['user_id'] = $user_data['user_id'];
+        //             header("Location: home.php");
+        //             die;
+        //         } else
+        //         {
+        //             echo "Incorrect Password";
+        //         }
+        //     }
+        // } else
+        // }
+        //     echo "incorrect Email";
+        // }
     }
 ?>
 
 <html lang="en">
     <head>
         <title>A-LK Login</title>
+        <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <meta name="keyword" content="alk, anti-lockout, kit, anti, lockout, car, vehicle, lock, key, facial, recognition">
         <meta name="description" content="The home page of the Anti-Lockout Kit web app">
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+
     </head>
   
-    <body class="text-center" style="background-color: #196fc8;">
-        <div id="box" style="margin: 600px; margin-top: 200px; padding: 100px; background-color: white;">
+    <body class="text-center" style="background-color: white;">
+        <div class="box" >
             <form class="form-signin">
-                <img class="mb-4" src="../Images/ALK_Logo.png" alt="" width="200" height="200">
-                <h1 style="margin-bottom:40px; font-family:sans-serif">Anti-Lockout Kit</h1>
+                <img class="mb-4 logo" src="../Images/ALK_Logo.png" alt="" >
+                
+                <h1 style="margin-bottom:40px; font-family:sans-serif;">Anti-Lockout Kit</h1>
                 <h1 class="h3 mb-3 font-weight-normal">
                     Please Login
                 </h1>
