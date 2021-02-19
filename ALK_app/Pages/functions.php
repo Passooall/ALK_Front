@@ -15,7 +15,7 @@ function check_login($db)
     }
 
     //redirect to login
-    header("Location: Login.php");
+    header("Location: login.php");
     die;
 }
 
