@@ -45,7 +45,7 @@ session_start();
     <div>
         <div class="text-center mb-4">
             <h1 class="mb-3 font-weight-normal" style="margin-top:100">
-                Account Info
+                Register Vehicle
             </h1>
         </div>
     </div>

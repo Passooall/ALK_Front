@@ -37,7 +37,7 @@
                         Create a new account?
                     </text>
                     <a href="signUp.php"  type="submit">
-                        Sign Up
+                        signUp
                     </a>
                 </div>
             </form>
