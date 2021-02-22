@@ -67,7 +67,7 @@ session_start();
                 <button formaction="home.php" class="btn btn-lg btn-primary btn-block" type="submit">
                     Login
                 </button>
-                <a href="forgotPassword.html"  type="submit" style="margin-top: 10px;">
+                <a href="forgotPassword.php"  type="submit" style="margin-top: 10px;">
                     Forgot Password
                 </a>
                 <a href="signUp.php" class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:30">

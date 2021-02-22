@@ -18,7 +18,7 @@
                     Email address
                 </label>
                 <input type="email" id="inputEmail" class="form-control" style="margin-bottom:20; margin-top:20" placeholder="Email address" required="" autofocus="">
-                <button formaction="resetPassword.html" class="btn btn-lg btn-primary btn-block" type="submit">
+                <button formaction="resetPassword.php" class="btn btn-lg btn-primary btn-block" type="submit">
                     Reset Password
                 </button>
                 <div style="margin-top:20px;">
