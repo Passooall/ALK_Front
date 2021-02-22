@@ -32,9 +32,6 @@ session_start();
             <li class="nav-item">
               <a class="nav-link" href="#">Account Info</a>
             </li>
-            <li>
-                <a class="nav-link" href="productInfo.php">Product Info<a/>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="aboutUs.php">About Us</a>
             </li>
