@@ -19,7 +19,12 @@
         }else
         {
             //verify email
+            //*insert code here*
+            
             //save to database
+            //$user_id = rand_num(20);
+            //$query = "insert into users (user_id, firstName, lastName, email, password) values ('$user_id', '$firstName', '$lastName', '$email', '$password')";
+            //mysqli_query($query);
 
             header("Location: login.php");
         }
