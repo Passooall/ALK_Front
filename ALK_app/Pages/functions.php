@@ -37,4 +37,24 @@ function random_num($length)
     }
 }
 
+
+function random_mail_number($email)
+{
+
+    $number = rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9);
+
+
+    $to = $email;
+    $subject = "Anti lock out kit verification number!";
+    $txt = "Here is your verification number $number";
+    $headers = "From: test@gmail.com";
+
+    if(mail($to,$subject,$txt,$headers)){
+        return $number;
+    }
+
+}
+
+
+
 ?>

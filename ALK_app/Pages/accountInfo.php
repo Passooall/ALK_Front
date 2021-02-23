@@ -20,7 +20,9 @@ session_start();
 <body>
     
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <img class="mb-2 mr-2 nav-logo" src="../Images/ALK_Logo.png" >
+        <a href="home.php"> 
+          <img class="mb-2 mr-2 nav-logo" src="../Images/ALK_Logo.png" href="../../../index.html">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

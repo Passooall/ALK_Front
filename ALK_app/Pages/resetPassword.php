@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+  include("connect.php");
+  include("functions.php");
+
+  // $user_data = check_login($db);
+
+  $randNumber = random_mail_number("test@gmail.com");
+
+?>
+
+
+
 <html lang="en">
     <head>
         <title>A-LK Reset Password</title>
@@ -43,6 +57,7 @@
             </form>
             <div id="shimai-world" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2147483647; pointer-events: none; background: transparent;"></div>
         </div>
+
     </body>
 
   </html>
