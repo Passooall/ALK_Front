@@ -49,6 +49,7 @@ session_start();
             <h1 class="mb-3 font-weight-normal" style="margin-top:100">
                 Hello, <?php echo $user_data['firstName']; ?>
             </h1>
+            <img src="../Images/lock.jpg" class="img-fluid">
         </div>
     </div>
 </body>

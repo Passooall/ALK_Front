@@ -4,7 +4,7 @@
     include("connect.php");
     include("functions.php");
 
-    if($_SERVER['REQUEST_METHOD'] == "POST")
+    if(isset($_Post['submit']))
     {
         //something was posted
         $firstName = $_POST['firstName'];
