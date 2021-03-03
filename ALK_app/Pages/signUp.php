@@ -31,6 +31,21 @@
     }
 ?>
 
+<script type="text/javascript">
+    var check = function() {
+      if (document.getElementById('inputPassword').value ==
+        document.getElementById('repassword').value) {
+        document.getElementById('message').innerHTML = '';
+        return true;
+      } else {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'Password and re-password are not matching';
+        return false;
+      }
+    }
+</script>
+
+
 <html lang="en">
     <head>
         <title>A-LK Sign Up</title>
@@ -88,12 +103,16 @@
                 <label for="inputPassword" class="sr-only">
                     Password
                 </label>
-                <input type="password" id="inputPassword" name="password" class="form-control" style="margin-bottom:20" placeholder="Password" required="">
+                <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
                 <label for="rePassword" class="sr-only">
                     Re Password
                 </label>
-                <input type="password" id="rePassword" name="repassword" class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
-                <button formaction="login.php" class="btn btn-lg btn-primary btn-block" type="submit">
+                <input type="password" name="repassword" id="repassword"  onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
+                <div  style="margin-bottom:20">
+                    <span id='message'></span>
+                </div>
+                
+                <button formaction="login.php" class="btn btn-lg btn-primary btn-block" type="submit" onclick="return check();">
                     Sign Up
                 </button>
                 <div style="margin-top:10px;">
