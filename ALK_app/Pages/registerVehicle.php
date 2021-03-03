@@ -46,7 +46,7 @@ session_start();
 
     <div>
         <div class="text-center mb-4">
-            <h1 class="mb-3 font-weight-normal" style="margin-top:100">
+            <h1 class="mb-3 font-weight-normal" style="margin-top:50">
                 Register Vehicle
             </h1>
         </div>
