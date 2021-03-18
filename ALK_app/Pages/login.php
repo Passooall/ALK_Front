@@ -11,7 +11,14 @@ session_start();
         $password = $_POST['password'];
 
         //read from database
-        $query = "select * from users where email = '$email' limit 1";
+        // This code must use binding of parameters or it is a security risk
+        // $query = "select * from users where email = '$email' limit 1";
+        
+        // Taken from https://www.php.net/manual/en/mysqli-stmt.bind-param.php
+        $stmt = $mysqli->prepare("select * from users where email = ? limit 1");
+        $stmt->bind_param('s', $email);
+
+        
         // $result = mysqli_query($db, $query);
 
         // if($result)
