@@ -4,36 +4,27 @@ session_start();
     include("connect.php");
     include("functions.php");
 
-    if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
+    //if($_SERVER['REQUEST_METHOD'] == "POST")
+    //{
         //something was posted
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    //    $email = $_POST['email'];
+    //    $password = $_POST['password'];
 
-        //read from database
-        $query = "select * from users where email = '$email' limit 1";
-        // $result = mysqli_query($db, $query);
+    //    $sql = "SELECT * FROM PDOLoginExample WHERE email = ?";
+    //    $result = $pdo->prepare($sql);
+    //    $result->bindParam(1, $email);
+    //    $result->execute();
 
-        // if($result)
-        // {
-        //     if($result && mysqli_num_rows($result) > 0)
-        //     {
-        //         $user_data = mysqli_fetch_assoc($result);
-        //         if($user_data['password'] == $password)
-        //         {
-        //             $_SESSION['user_id'] = $user_data['user_id'];
-        //             header("Location: home.php");
-        //             die;
-        //         } else
-        //         {
-        //             echo "Incorrect Password";
-        //         }
-        //     }
-        // } else
-        // }
-        //     echo "incorrect Email";
-        // }
-    }
+    //    $user = $result->fetch();
+
+    //    if(password_verify($password, $user["pass"])
+    //      {
+    //        echo "Logged In"
+    //      }else {
+    //        echo "incorrect username or password";
+    //      }
+    //   )
+    //}
 ?>
 
 <html lang="en">

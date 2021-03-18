@@ -13,17 +13,20 @@
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        if(strcmp($password,$repassword)!=0)
+        if($password != $repassword)
         {
             echo "Passwords do not match";
+            header("Location signUp.php");
         }else
         {
+            //SALT AND HASH
+            $pass = password_hash($password, PASSWORD_DEFAULT);
             //verify email
-            //*insert code here*
+            email_verify($email);
             
             //save to database
             //$user_id = rand_num(20);
-            //$query = "insert into users (user_id, firstName, lastName, email, password) values ('$user_id', '$firstName', '$lastName', '$email', '$password')";
+            //$query = "insert into users (user_id, firstName, lastName, email, password) values ('$user_id', '$firstName', '$lastName', '$email', '$pass')";
             //mysqli_query($query);
 
             header("Location: login.php");
