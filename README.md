@@ -1,4 +1,5 @@
 # ALK_Front
 Front-end development code for the ALK senior project
 
-Currently contains the html for the ALK web app
+A user can sign-up for an account and register a vehicle to unlock
+it using facial recognition.

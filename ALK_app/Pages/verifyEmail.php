@@ -2,7 +2,7 @@
 session_start();
 
     include("connect.php");
-    include("functions.php");
+    include("funcs.php");
 ?>
 
 <html lang="en">
