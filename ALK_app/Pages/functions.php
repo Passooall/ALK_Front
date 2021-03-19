@@ -1,7 +1,5 @@
 <?php
 
-require './PHPMailer/class.phpmailer.php';
-
 function check_login($db)
 {
     if(isset($_SESSION['user_id']))
@@ -57,8 +55,9 @@ function random_mail_number($email)
 
 }
 
-email_verify($email)
+function email_verify($email)
 {
+    require './PHPMailer/class.phpmailer.php';
     $mail = new PHPMailer;
 
     //$mail->isSMTP();
@@ -75,7 +74,7 @@ email_verify($email)
     $mail->addReplyTo('anti.lockout.kit@gmail.com');
 
     $mail->isHTML(true);
-    $mail->Subject='Email Verification for Anti-Lockout Kit'
+    $mail->Subject='Email Verification for Anti-Lockout Kit';
     $mail->Body='<h1 align=center>Verify Email</h1><p align=center>Click the link below to verrify your E-mail</p>';
     if(!$mail->send())
     {

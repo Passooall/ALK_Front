@@ -2,7 +2,7 @@
 //conect_to_database
 $server = 'localhost';
 $user = 'antilockout';
-$password = 'Laf71Jwoyua';
+$password = '';
 $database = 'antilockout';
 $db = new mysqli($server, $user, $password, $database);
 // oop   $obj->member
