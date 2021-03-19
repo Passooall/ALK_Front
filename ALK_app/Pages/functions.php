@@ -67,7 +67,7 @@ function email_verify($email)
     $mail->SMTPSecure='tls';
 
     $mail->Username='anti.lockout.kit@gmail.com';
-    $mail->Password='ALK4321!';
+    $mail->Password='';
 
     $mail->setFrom('anti.lockout.kit@gmail.com','Anti-Lockout Kit');
     $mail->addAddress('$email');
