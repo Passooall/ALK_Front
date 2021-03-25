@@ -1,5 +1,4 @@
 <?php
- session_start();
 
     include("connect.php");
     include("funcs.php");
@@ -19,14 +18,27 @@
             header("Location signUp.php");
         }else
         {
-            //SALT AND HASH
-            $pass = password_hash($password, PASSWORD_DEFAULT);
             //verify email
             email_verify($email);
             
-            //save to database
-            //$user_id = rand_num(20);
-            //$query = "insert into users (user_id, firstName, lastName, email, password) values ('$user_id', '$firstName', '$lastName', '$email', '$pass')";
+            //generate random user ID number and check to see if
+            // it doesn't already exist
+            $new = FALSE;
+            while($new == False)
+            { 
+              $user_id = random_num(20);
+              $result = mysql_query('SELECT * FROM Users WHERE User_ID == '$user_id'');
+              if($result == 0){
+                  $new == TRUE;
+              }
+            } 
+            //Salt password
+            $salt = salt($password);
+            //hash password with salt
+            //224 is max length of password
+            $pass = hash("$sha256", $salt.$password);
+            //store into database
+            //$query = "insert into users (User_id, fName, lName, email, password, salt) values ('$user_id', '$firstName', '$lastName', '$email', '$pass','$salt')";
             //mysqli_query($query);
 
             header("Location: login.php");
@@ -107,6 +119,11 @@
                     Password
                 </label>
                 <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
+                <div style="margin-top:10px;">
+                  <text>
+                    Password can only contain 0-9, a-z, A-Z.
+                  </text>
+                </div>
                 <label for="rePassword" class="sr-only">
                     Re Password
                 </label>
