@@ -3,27 +3,30 @@
     include("connect.php");
     include("funcs.php");
 
-    //if($_SERVER['REQUEST_METHOD'] == "POST")
-    //{
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
         //something was posted
-    //    $email = $_POST['email'];
-    //    $password = $_POST['password'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    //    $sql = "SELECT * FROM PDOLoginExample WHERE email = ?";
-    //    $result = $pdo->prepare($sql);
-    //    $result->bindParam(1, $email);
-    //    $result->execute();
+        $salt = salt($password);
+        $pass = hash("$sha256", $salt.$password);
 
-    //    $user = $result->fetch();
+        $sql = "SELECT * FROM Users WHERE email = ?";
+        $result = $pdo->prepare($sql);
+        $result->bindParam(1, $email);
+        $result->execute();
 
-    //    if(password_verify($password, $user["pass"])
-    //      {
-    //        echo "Logged In"
-    //      }else {
-    //        echo "incorrect username or password";
-    //      }
-    //   )
-    //}
+        $user = $result->fetch();
+
+        if(password_verify($pass, $user["pass"])
+          {
+            echo "Logged In"
+          }else {
+            echo "incorrect username or password";
+          }
+       )
+    }
 ?>
 
 <html lang="en">

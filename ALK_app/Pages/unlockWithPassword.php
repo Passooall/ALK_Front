@@ -10,10 +10,10 @@ session_start();
 
 <html lang="en">
 <head>
-  <title>A-LK Home</title>
+  <title>A-LK Unlock</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <meta name="description" content="The home page of the Anti-Lockout Kit web app">
+  <meta name="description" content="The page to unlock vehicle with password instead of facial recognition">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 </head>
 
@@ -29,7 +29,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarsExample02">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="accountInfo.php">Account Info</a>
@@ -43,17 +43,8 @@ session_start();
           </ul>
         </div>
       </nav>
-
-    <div>
-        <div class="text-center mb-4">
-            <h1 class="mb-3 font-weight-normal" style="margin-top:100">
-                Tap to unlock
-            </h1>
-            <img src="../Images/lock.jpg" class="img-fluid">
-            <button formaction="unlockWithPassword.php" class="btn btn-lg btn-primary btn-block" type="submit">
-                    Use password to Unlock
-                </button>
-        </div>
-    </div>
+      <label for="inputPassword" class="sr-only">
+        Password
+      </label>
+      <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
 </body>
-</html>
