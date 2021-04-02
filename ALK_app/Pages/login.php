@@ -2,30 +2,33 @@
 
     include("connect.php");
     include("funcs.php");
+    if(mysqli_connect_errno())
+    {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+    }
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        //something was posted
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+      // something was posted
+      $email = $_POST['email'];
+      $password = $_POST['password'];
 
-        $salt = salt($password);
-        $pass = hash("$sha256", $salt.$password);
+      $salt = salt($password);
+      $pass = hash("$sha256", $salt.$password);
 
-        $sql = "SELECT * FROM Users WHERE email = ?";
-        $result = $pdo->prepare($sql);
-        $result->bindParam(1, $email);
-        $result->execute();
+      $sql = mysqli_query("SELECT FROM Users (email, password) WHERE email = $email");
 
-        $user = $result->fetch();
-
-        if(password_verify($pass, $user["pass"])
-          {
-            echo "Logged In"
-          }else {
-            echo "incorrect username or password";
-          }
-       )
+      if(mysqli_num_rows($sql) > 0)
+      {
+               if(strcmp($pass,$sql) == 0)
+               {
+                       header('Location: home.php');
+               }
+      }else
+      {
+               echo "incorrect username or password";
+      }
     }
 ?>
 
@@ -81,7 +84,7 @@
 
 
         <div class="box" >
-            <form class="form-signin">
+            <form method="post" class="form-signin">
                 <img class="mb-4 logo" src="../Images/ALK_Logo.png" alt="" >
                 
                 <h1 style="margin-bottom:40px; font-family:sans-serif;">Anti-Lockout Kit</h1>
@@ -96,7 +99,7 @@
                     Password
                 </label>
                 <input type="password" id="inputPassword" class="form-control" style="margin-bottom:20" placeholder="Password" required="">
-                <button formaction="home.php" class="btn btn-lg btn-primary btn-block" type="submit">
+                <button formaction="" class="btn btn-lg btn-primary btn-block" type="submit">
                     Login
                 </button>
                 <a href="forgotPassword.php"  type="submit" style="margin-top: 10px;">

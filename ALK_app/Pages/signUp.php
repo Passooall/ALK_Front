@@ -2,8 +2,13 @@
 
     include("connect.php");
     include("funcs.php");
+    if(mysqli_connect_errno())
+    {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+    }
 
-    if(isset($_Post['submit']))
+    if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         //something was posted
         $firstName = $_POST['firstName'];
@@ -12,37 +17,30 @@
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        if($password != $repassword)
-        {
-            echo "Passwords do not match";
-            header("Location signUp.php");
-        }else
-        {
-            //verify email
-            email_verify($email);
+        //verify email
+        email_verify($email);
             
-            //generate random user ID number and check to see if
-            // it doesn't already exist
-            $new = FALSE;
-            while($new == False)
-            { 
-              $user_id = random_num(20);
-              $result = mysql_query('SELECT * FROM Users WHERE User_ID == '$user_id'');
-              if($result == 0){
-                  $new == TRUE;
-              }
-            } 
-            //Salt password
-            $salt = salt($password);
-            //hash password with salt
-            //224 is max length of password
-            $pass = hash("$sha256", $salt.$password);
-            //store into database
-            $query = "insert into users (User_id, fName, lName, email, password, salt) values ('$user_id', '$firstName', '$lastName', '$email', '$pass','$salt')";
-            mysqli_query($query);
+        //generate random user ID number and check to see if
+        // it doesn't already exist
+        $new = FALSE;
+        while($new == False)
+        { 
+          $user_id = random_num(20);
+          $result = mysqli_query($db, "SELECT * FROM Users WHERE User_ID = $user_id");
+          if($result == 0){
+               $new == TRUE;
+          }
+        } 
+        //Salt password
+         $salt = salt($password);
+        //hash password with salt
+        //224 is max length of password
+        $pass = hash("$sha256", $salt.$password);
+        //store into database
+         $query = "insert into users (User_id, fName, lName, email, password, zest) values ('$user_id', '$firstName', '$lastName', '$email', '$pass','$salt')";
+        mysqli_query($query);
 
-            header("Location: login.php");
-        }
+        header("Location: login.php");
     }
 ?>
 
@@ -110,7 +108,7 @@
         </div>
   
          <div class="box" >
-            <form class="form-signin">
+            <form method="post" class="form-signin">
                 <img class="mb-4 logo" src="../Images/ALK_Logo.png" alt="" width="200" height="200">
                 <h1 style="margin-bottom:30">Anti-Lockout Kit</h1>
                 <label for="firstName" class="sr-only">
@@ -129,20 +127,20 @@
                     Password
                 </label>
                 <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
-                <div style="margin-top:10px;">
-                  <text>
-                    Password can only contain 0-9, a-z, A-Z.
-                  </text>
-                </div>
                 <label for="rePassword" class="sr-only">
                     Re Password
                 </label>
                 <input type="password" name="repassword" id="repassword"  onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
+                <div>
+                  <text>
+                    Password can only contain 0-9, a-z, A-Z.
+                  </text>
+                </div>
                 <div  style="margin-bottom:20">
                     <span id='message'></span>
                 </div>
                 
-                <button formaction="login.php" class="btn btn-lg btn-primary btn-block" type="submit" onclick="return check();">
+                <button formaction="" class="btn btn-lg btn-primary btn-block" type="submit" onclick="return check();">
                     Sign Up
                 </button>
                 <div style="margin-top:10px;">
