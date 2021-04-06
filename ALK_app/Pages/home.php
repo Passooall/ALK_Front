@@ -57,9 +57,9 @@ session_start();
                 Tap to unlock
             </h1>
             <img src="../Images/lock.jpg" class="img-fluid">
-            <button formaction="unlockWithPassword.php" class="btn btn-lg btn-primary btn-block" type="submit">
-                    Use password to Unlock
-                </button>
+            <a href="unlockWithPassword.php" class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:30">
+                    Unlock with password
+                </a>
         </div>
     </div>
   </body>

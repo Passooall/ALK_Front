@@ -27,7 +27,7 @@
         { 
           $user_id = random_num(20);
           $result = mysqli_query($db, "SELECT * FROM Users WHERE User_ID = $user_id");
-          if($result == 0){
+          if(mysqli_num_rows($result) == 0){
                $new == TRUE;
           }
         } 
@@ -48,13 +48,20 @@
     var check = function() {
       if (document.getElementById('inputPassword').value ==
         document.getElementById('repassword').value) {
-        document.getElementById('message').innerHTML = '';
+        document.getElementById('message1').innerHTML = '';
         return true;
       } else {
-        document.getElementById('message').style.color = 'red';
-        document.getElementById('message').innerHTML = 'Password and re-password are not matching';
+        document.getElementById('message1').style.color = 'red';
+        document.getElementById('message1').innerHTML = 'Password and re-password are not matching';
         return false;
       }
+      if(document.getElementbyID('inputPassword').length < 10 && 
+        !(alphanum(document.getElementbyID('inputPassword')))) {
+          document.getElementByID('message2').style.color = 'red';
+          document.getElementByID('message2').innerHTML = 'Password must be at least 10 characters and must only contain 0-9, a-z, A-Z.';
+        } else {
+          document.getElementById('message2').innerHTML = '';
+        }
     }
 </script>
 
@@ -131,13 +138,9 @@
                     Re Password
                 </label>
                 <input type="password" name="repassword" id="repassword"  onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
-                <div>
-                  <text>
-                    Password can only contain 0-9, a-z, A-Z.
-                  </text>
-                </div>
                 <div  style="margin-bottom:20">
-                    <span id='message'></span>
+                    <span id='message1'></span>
+                    <span id='message2'></span>
                 </div>
                 
                 <button formaction="" class="btn btn-lg btn-primary btn-block" type="submit" onclick="return check();">
