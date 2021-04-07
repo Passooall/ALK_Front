@@ -18,33 +18,11 @@ session_start();
 </head>
 
 <body>
-    
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="home.php"> 
-          <img class="mb-2 mr-2 nav-logo" src="../Images/ALK_Logo.png" href="../../../index.html">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExample02">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="accountInfo.php">Account Info</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="registerVehicle.php">Register Vehicle</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logOut.php">Log Out</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <?php include 'navBarLogedIn.php';?>
+    <div class = "box">
       <label for="inputPassword" class="sr-only">
         Password
       </label>
-      <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
+      <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:100" placeholder="Password" required="">
+    </div>
 </body>
