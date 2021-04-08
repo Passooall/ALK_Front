@@ -17,7 +17,11 @@
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        if(strlen($password)<10 || !alphanum($password))
+        $query = mysqli_query($db, "SELECT * FROM Users WHERE email = $email");
+        if(mysqli_num_rows($query) != 0)
+        {
+            echo '<span style="color:red;text-align:center;">E-mail is already registered</span>';     
+        } elseif(strlen($password)<10 || !alphanum($password))
         {
                 echo '<span style="color:red;text-align:center;">Password must contain at least 10 characters of only A-Z, a-z, or 0-9</span>';
         } else {  
