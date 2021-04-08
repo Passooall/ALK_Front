@@ -1,5 +1,6 @@
 <?php
-
+    session_start();
+    
     include("connect.php");
     include("funcs.php");
     if(mysqli_connect_errno())
@@ -23,6 +24,8 @@
       {
                if(strcmp($pass,$sql) == 0)
                {
+                       $_SESSION['loggedin'] = true;
+                       $_SESSION['user'] = $email; 
                        header('Location: home.php');
                }
       }else

@@ -17,30 +17,35 @@
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        //verify email
-        email_verify($email);
+        if(strlen($password)<10 || !alphanum($password))
+        {
+                echo '<span style="color:red;text-align:center;">Password must contain at least 10 characters of only A-Z, a-z, or 0-9</span>';
+        } else {  
+          //verify email
+          email_verify($email);
             
-        //generate random user ID number and check to see if
-        // it doesn't already exist
-        $new = FALSE;
-        while($new == False)
-        { 
-          $user_id = random_num(20);
-          $result = mysqli_query($db, "SELECT * FROM Users WHERE User_ID = $user_id");
-          if(mysqli_num_rows($result) == 0){
+          //generate random user ID number and check to see if
+          // it doesn't already exist
+          $new = FALSE;
+          while($new == False)
+          {  
+            $user_id = random_num(20);
+            $result = mysqli_query($db, "SELECT * FROM Users WHERE User_ID = $user_id");
+            if(mysqli_num_rows($result) == 0){
                $new == TRUE;
-          }
-        } 
-        //Salt password
-         $salt = salt($password);
-        //hash password with salt
-        //224 is max length of password
-        $pass = hash("$sha256", $salt.$password);
-        //store into database
-         $query = "insert into users (User_id, fName, lName, email, password, zest) values ('$user_id', '$firstName', '$lastName', '$email', '$pass','$salt')";
-        mysqli_query($query);
+            }
+          } 
+          //Salt password
+          $salt = salt($password);
+          //hash password with salt
+          //224 is max length of password
+          $pass = hash("$sha256", $salt.$password);
+          //store into database
+          $query = "insert into users (User_id, fName, lName, email, password, zest) values ('$user_id', '$firstName', '$lastName', '$email', '$pass','$salt')";
+          mysqli_query($query);
 
-        header("Location: login.php");
+          header("Location: login.php");
+        }
     }
 ?>
 
@@ -55,13 +60,6 @@
         document.getElementById('message1').innerHTML = 'Password and re-password are not matching';
         return false;
       }
-      if(document.getElementbyID('inputPassword').length < 10 && 
-        !(alphanum(document.getElementbyID('inputPassword')))) {
-          document.getElementByID('message2').style.color = 'red';
-          document.getElementByID('message2').innerHTML = 'Password must be at least 10 characters and must only contain 0-9, a-z, A-Z.';
-        } else {
-          document.getElementById('message2').innerHTML = '';
-        }
     }
 </script>
 
@@ -140,7 +138,6 @@
                 <input type="password" name="repassword" id="repassword"  onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
                 <div  style="margin-bottom:20">
                     <span id='message1'></span>
-                    <span id='message2'></span>
                 </div>
                 
                 <button formaction="" class="btn btn-lg btn-primary btn-block" type="submit" onclick="return check();">
