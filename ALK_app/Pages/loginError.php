@@ -1,4 +1,4 @@
 <?php
-    echo "Must be logged in to access this page";
-    header( "refresh:5; url=login.php" );
+    echo "ERROR: Must be logged in to access this page";
+    header( "refresh:3; url=login.php" );
 ?>
