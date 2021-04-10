@@ -38,14 +38,16 @@
             if(mysqli_num_rows($result) == 0){
                $new == TRUE;
             }
-          } 
+          }
+          $group_id = random_num(20);
+          $auth = 3;
           //Salt password
           $salt = salt($password);
           //hash password with salt
           //224 is max length of password
           $pass = hash("$sha256", $salt.$password);
           //store into database
-          $query = "insert into users (User_id, fName, lName, email, password, zest) values ('$user_id', '$firstName', '$lastName', '$email', '$pass','$salt')";
+          $query = "insert into Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ('$user_id', '$group_id', '$firstName', '$lastName', '$email', '$pass','$salt', '$auth')";
           mysqli_query($query);
 
           header("Location: login.php");
