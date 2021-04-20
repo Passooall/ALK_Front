@@ -24,15 +24,61 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   <body>
     <?php include 'navBarLogedIn.php';?>
 
-    <div class="box">
+    <div class="container py-3">
         <div class="text-center mb-4">
             <h1 class="mb-3 font-weight-normal" style="margin-top:100">
-                Tap to unlock
+                Select a car to unlock
             </h1>
-            <img src="../Images/lock.jpg" class="img-fluid">
-            <a href="unlockWithPassword.php" class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:30">
-                    Unlock with password
-                </a>
+        </div>
+        <div class="row row-cols-1 row-cols-xs-3 mb-3 text-center">
+          <a href = "regOrUnlock.php" style="color:black">  
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                  <h4 class="my-0 fw-normal">Car 1</h4>
+                </div>
+                <div class="card-body">
+                  <img src="../Images/carIcon.png" alt="Car Icon" width="200px" height="200px">
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="regOrUnlock.php" style="color:black">
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                  <h4 class="my-0 fw-normal">Car 2</h4>
+                </div>
+                <div class="card-body">
+                  <img src="../Images/carIcon.png" alt="Car Icon" width="200px" height="200px">
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="regOrUnlock.php" style="color:black">
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                  <h4 class="my-0 fw-normal">Car 3</h4>
+                </div>
+                <div class="card-body">
+                  <img src="../Images/carIcon.png" alt="Car Icon" width="200px" height="200px">
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="regOrUnlock.php" style="color:black">
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                  <h4 class="my-0 fw-normal">Car 4</h4>
+                </div>
+                <div class="card-body">
+                  <img src="../Images/carIcon.png" alt="Car Icon" width="200px" height="200px">
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
     </div>
   </body>

@@ -1,9 +1,9 @@
-<?php
+/*<?php
 session_start();
 
     include("connect.php");
     include("funcs.php");
-?>
+?>*/
 
 <html lang="en">
     <head>
@@ -54,10 +54,11 @@ session_start();
           </nav>
         </div>
           
-        <div class="box" >
-            <img class="mb-4 logo" src="../Images/ALK_Logo.png" alt="" >
-            <div class="box">
-                <p>To continue, please check your E-mail for verifcation link</p>
+        <div class="box">
+            <div class="text-center mb-4">
+                <h1 class="mb-3 font-weight-normal" style="margin-top:100">
+                    Please check your email for a link to verify your email.
+                </h1>
             </div>
         </div>
     </body>

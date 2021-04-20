@@ -50,7 +50,7 @@
           $query = "insert into Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ('$user_id', '$group_id', '$firstName', '$lastName', '$email', '$pass','$salt', '$auth')";
           mysqli_query($query);
 
-          header("Location: login.php");
+          header("Location: verifyEmail.php");
         }
     }
 ?>
