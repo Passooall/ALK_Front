@@ -18,7 +18,7 @@
       $salt = salt($password);
       $pass = hash("$sha256", $salt.$password);
 
-      $sql = mysqli_query("SELECT FROM Users (email, password) WHERE email = $email AND password = $pass");
+      $sql = mysqli_query("SELECT email, password FROM Users WHERE email='".$email."' AND password='".$pass."'");
 
       if(mysqli_num_rows($sql) > 0)
       {
@@ -60,11 +60,11 @@
                 <label for="inputEmail" class="sr-only">
                     Email address
                 </label>
-                <input type="email" id="inputEmail" class="form-control" style="margin-bottom:20" placeholder="Email address" required="" autofocus="">
+                <input type="email" name="email" class="form-control" style="margin-bottom:20" placeholder="Email address" required="" autofocus="">
                 <label for="inputPassword" class="sr-only">
                     Password
                 </label>
-                <input type="password" id="inputPassword" class="form-control" style="margin-bottom:20" placeholder="Password" required="">
+                <input type="password" name="password" class="form-control" style="margin-bottom:20" placeholder="Password" required="">
                 <button formaction="" class="btn btn-lg btn-primary btn-block" type="submit">
                     Login
                 </button>

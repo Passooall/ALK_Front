@@ -17,7 +17,7 @@
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        $query = mysqli_query($db, "SELECT * FROM Users WHERE email = $email");
+        $query = mysqli_query($db, "SELECT email FROM Users WHERE email='".$email."'");
         if(mysqli_num_rows($query) != 0)
         {
             echo '<span style="color:red;text-align:center;">E-mail is already registered</span>';     
@@ -34,7 +34,7 @@
           while($new == False)
           {  
             $user_id = random_num(20);
-            $result = mysqli_query($db, "SELECT * FROM Users WHERE User_ID = $user_id");
+            $result = mysqli_query($db, "SELECT User_ID FROM Users WHERE User_ID='".$user_id."'");
             if(mysqli_num_rows($result) == 0){
                $new == TRUE;
             }
@@ -47,8 +47,8 @@
           //224 is max length of password
           $pass = hash("$sha256", $salt.$password);
           //store into database
-          $query = "insert into Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ('$user_id', '$group_id', '$firstName', '$lastName', '$email', '$pass','$salt', '$auth')";
-          mysqli_query($query);
+          $query = "INSERT INTO Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ('$user_id', '$group_id', '$firstName', '$lastName', '$email', '$pass','$salt', '$auth')";
+          mysqli_query($db, $query);
 
           header("Location: verifyEmail.php");
         }
@@ -91,23 +91,23 @@
                 <label for="firstName" class="sr-only">
                     First Name
                 </label>
-                <input type="text" id="firstName" name="firstName" class="form-control" style="margin-bottom:20" placeholder="First Name" required="">
+                <input type="text" name="firstName" class="form-control" style="margin-bottom:20" placeholder="First Name" required="">
                 <label for="lastName" class="sr-only">
                     Last Name
                 </label>
-                <input type="text" id="lastName" name="lastName" class="form-control" style="margin-bottom:20" placeholder="Last Name" required="">
+                <input type="text" name="lastName" class="form-control" style="margin-bottom:20" placeholder="Last Name" required="">
                 <label for="inputEmail" class="sr-only">
                     Email address
                 </label>
-                <input type="email" id="inputEmail" name="email" class="form-control" style="margin-bottom:20" placeholder="Email address" required="" autofocus="">
+                <input type="email" name="email" class="form-control" style="margin-bottom:20" placeholder="Email address" required="" autofocus="">
                 <label for="inputPassword" class="sr-only">
                     Password
                 </label>
-                <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
+                <input name="password" name="password" type="password" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Password" required="">
                 <label for="rePassword" class="sr-only">
                     Re Password
                 </label>
-                <input type="password" name="repassword" id="repassword"  onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
+                <input type="password" name="repassword" onkeyup='check();' class="form-control" style="margin-bottom:20" placeholder="Re-Password" required="">
                 <div  style="margin-bottom:20">
                     <span id='message1'></span>
                 </div>

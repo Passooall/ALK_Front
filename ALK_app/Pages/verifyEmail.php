@@ -59,6 +59,7 @@ session_start();
                 <h1 class="mb-3 font-weight-normal" style="margin-top:100">
                     Please check your email for a link to verify your email.
                 </h1>
+                <a class="btn btn-outline-secondary" href="login.php">Login</a>
             </div>
         </div>
     </body>
