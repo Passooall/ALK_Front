@@ -18,7 +18,7 @@
       $salt = salt($password);
       $pass = hash("$sha256", $salt.$password);
 
-      $sql = mysqli_query("SELECT email, password FROM Users WHERE email='".$email."' AND password='".$pass."'");
+      $sql = mysqli_query("SELECT Email, Password FROM Users WHERE Email='".$email."' AND Password='".$pass."'");
 
       if(mysqli_num_rows($sql) > 0)
       {

@@ -17,7 +17,7 @@
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        $query = mysqli_query($db, "SELECT email FROM Users WHERE email='".$email."'");
+        $query = mysqli_query($db, "SELECT Email FROM Users WHERE Email='".$email."'");
         if(mysqli_num_rows($query) != 0)
         {
             echo '<span style="color:red;text-align:center;">E-mail is already registered</span>';     
@@ -47,7 +47,7 @@
           //224 is max length of password
           $pass = hash("$sha256", $salt.$password);
           //store into database
-          $query = "INSERT INTO Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ('$user_id', '$group_id', '$firstName', '$lastName', '$email', '$pass','$salt', '$auth')";
+          $query = "INSERT INTO Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ($user_id, $group_id, $firstName, $lastName, $email, $pass, $salt, $auth)";
           mysqli_query($db, $query);
 
           header("Location: verifyEmail.php");
