@@ -9,13 +9,19 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
   include("connect.php");
   include("funcs.php");
-
+  
+  $email = $_SESSION['email'];
+  $query = "SELECT Email FROM Users INNER JOIN Cars ON Cars.User_ID=Users.U_ID WHERE Users.Email='".$email."'";
+  $result = mysqli_query($db, $query);
+  
   //add query to check if car is already registered
-  /* if(car is not registered)
-        go to registery page
-    else
-        go to unlock page*/
+  if(mysqli_num_rows($result)==0)
+  {
+          header('Location: registerVehicle.php');
+  } else {
+          header('Location: unlock.php');
+  }
 
-    header('Location: unlock.php');
+
 
 ?>

@@ -21,36 +21,41 @@
         if(mysqli_num_rows($query) != 0)
         {
             echo '<span style="color:red;text-align:center;">E-mail is already registered</span>';     
-        } elseif(strlen($password)<10 || !alphanum($password))
+        } elseif(strlen($password)<8 || !alphanum($password))
         {
-                echo '<span style="color:red;text-align:center;">Password must contain at least 10 characters of only A-Z, a-z, or 0-9</span>';
+                echo '<span style="color:red;text-align:center;">Password must contain at least 8 characters of only A-Z, a-z, or 0-9</span>';
         } else {  
           //verify email
           email_verify($email);
             
           //generate random user ID number and check to see if
           // it doesn't already exist
-          $new = FALSE;
-          while($new == False)
-          {  
+          //$new = FALSE;
+          //while($new == False)
+          //{  
             $user_id = random_num(20);
-            $result = mysqli_query($db, "SELECT User_ID FROM Users WHERE User_ID='".$user_id."'");
+            /*$result = mysqli_query($db, "SELECT U_ID FROM Users WHERE U_ID='".$user_id."'");
             if(mysqli_num_rows($result) == 0){
                $new == TRUE;
             }
-          }
-          $group_id = random_num(20);
-          $auth = 3;
+          }*/
+
           //Salt password
           $salt = salt($password);
           //hash password with salt
           //224 is max length of password
-          $pass = hash("$sha256", $salt.$password);
+          $pass = hash('sha256', $password.$salt);
+          $phone = "n/a";
+          $address = "n/a";
+          $state = "n/a";
           //store into database
-          $query = "INSERT INTO Users (User_ID, Co_ID, Fname, Lname, Email, Password, Zest, Authority) values ($user_id, $group_id, $firstName, $lastName, $email, $pass, $salt, $auth)";
-          mysqli_query($db, $query);
-
-          header("Location: verifyEmail.php");
+          $query = "INSERT INTO Users (U_ID, Fname, Lname, Email, Phone, Address, State, Pass, Zest) VALUES ($user_id, $firstName, $lastName, $phone, $address, $state, $email, $pass, $salt)";
+          if(mysqli_query($db, $query))
+          {
+              header("Location: verifyEmail.php");
+          } else {
+              echo '<span style="color:red;text-align:center;">ERROR: Could not execute sql</span>';
+          }
         }
     }
 ?>

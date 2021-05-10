@@ -10,7 +10,16 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include("connect.php");
   include("funcs.php");
 
-  // $user_data = check_login($db);
+  $email=$_SESSION['email'];
+  $query = "SELECT Fname, Lname, Email, Phone, Address, State FROM Users WHERE Email='".$email."'";
+  $result = mysqli_query($db, $query);
+  $row = mysqli_fetch_assoc($result);
+  $Fname = $row["Fname"];
+  $Lname = $row["Lname"];
+  $Email = $row["Email"];
+  $Phone = $row["Phone"];
+  $Address = $row["Address"];
+  $State = $row["State"];
 
 ?>
 
@@ -42,9 +51,9 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     <div class="card">
                       <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                          <img src="../Images/default_profile_picture.jpg" alt="Admin" class="rounded-circle" width="150">
+                          <img src="../Images/default_profile_pic.jpg" alt="Admin" class="rounded-circle" width="150">
                           <div class="mt-3">
-                            <h4>Sahar Shoar</h4>
+                            <h4> <?php echo $Fname." ".$Lname?> </h4>
                             <button class="btn btn-primary">Edit Profile</button>
                           </div>
                         </div>
@@ -59,7 +68,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Full Name</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            Sahar Shoar
+                            <?php echo $Fname." ".$Lname ?>
                           </div>
                         </div>
                         <hr>
@@ -68,7 +77,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Email</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            test@alk.com
+                            <?php echo $Email ?>
                           </div>
                         </div>
                         <hr>
@@ -77,16 +86,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Phone</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            (555) 555-5555
-                          </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Vehicle Info</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary">
-                            Bugatti Chiron
+                            <?php echo $Phone ?>
                           </div>
                         </div>
                         <hr>
@@ -95,7 +95,16 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Address</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            Bay Area, San Francisco, CA
+                            <?php echo $Address ?>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">State</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <?php echo $State ?>
                           </div>
                         </div>
                       </div>

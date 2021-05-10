@@ -16,15 +16,15 @@
       $password = $_POST['password'];
 
       $salt = salt($password);
-      $pass = hash("$sha256", $salt.$password);
+      $pass = hash('sha256', $password.$salt);
 
-      $sql = mysqli_query("SELECT * FROM Users (email, password) WHERE email = $email AND password = $pass");
+      $sql = mysqli_query($db, "SELECT Email, Pass FROM Users WHERE Email='".$email."' AND Pass='".$pass."'");
 
       if(mysqli_num_rows($sql) > 0)
       {
         //NEED TO UPDATE VERIFY IN ACCOUNT TO TRUE;
         $_SESSION['loggedin'] = true;
-        $_SESSION['user'] = $email; 
+        $_SESSION['email'] = $email; 
         header('Location: home.php');
       }else
       {

@@ -25,9 +25,15 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <body>
     <?php include 'navBarLogedIn.php';?>
     <div class = "box">
+      <h1 class="mb-3 font-weight-normal" style="margin-top:50;text-align:center">
+        Enter email to unlock car
+      </h1>
       <label for="inputPassword" class="sr-only">
         Password
       </label>
       <input name="password" id="inputPassword" type="password" onkeyup='check();' class="form-control" style="margin-bottom:100" placeholder="Password" required="">
+      <a href="#" class="btn btn-lg btn-primary btn-block" type="submit">
+        Unlock
+      </a>
     </div>
 </body>
