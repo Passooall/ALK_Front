@@ -10,15 +10,15 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include("connect.php");
   include("funcs.php");
 
-  function setCarID()
+  function setCarID($carID)
   {
-          //somehow set carID so $_SESSION['carID'];
+          $_SESSION['carID'] = $carID;
           header('Location: regOrUnlock.php');
   }
 
   if(isset($_GET['run']))
   {
-          setCarID();
+          setCarID($carID);
   }
 
 
@@ -43,7 +43,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </h1>
         </div>
         <div class="row row-cols-1 row-cols-xs-3 mb-3 text-center">
-          <a href='home.php?run=true' style="color:black">  
+          <a href='home.php?run=true?carID=1' style="color:black">  
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -55,7 +55,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </a>
-          <a href='home.php?run=true' style="color:black">
+          <a href='home.php?run=true?carID=2' style="color:black">
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -67,7 +67,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </a>
-          <a href='home.php?run=true' style="color:black">
+          <a href='home.php?run=true?carID=3' style="color:black">
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -79,7 +79,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </a>
-          <a href='home.php?run=true' style="color:black">
+          <a href='home.php?run=true?carID=4' style="color:black">
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
