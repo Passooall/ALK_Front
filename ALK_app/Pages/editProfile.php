@@ -11,16 +11,46 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include("funcs.php");
 
   $email=$_SESSION['email'];
-  $query = "SELECT Fname, Lname, Email, Phone, Address, State FROM Users WHERE Email='".$email."'";
+  $query = "SELECT Fname, Lname, Email FROM Users WHERE Email='".$email."'";
   $result = mysqli_query($db, $query);
   $row = mysqli_fetch_assoc($result);
   $Fname = $row["Fname"];
   $Lname = $row["Lname"];
   $Email = $row["Email"];
-  $Phone = $row["Phone"];
-  $Address = $row["Address"];
-  $State = $row["State"];
 
+  if($_SERVER["REQUEST_METHOD"] == "POST")
+  {
+    if(!empty($_POST['phone']))
+    {
+            $phone = $_POST['phone'];
+            $query = "UPDATE Users SET Phone='".$phone."' WHERE Email='".$email."'";
+            if(!mysqli_query($db, $query))
+            {
+                    echo "ERROR: Could not update";
+            }
+    }
+    if(!empty($_POST['address']))
+    {
+            $address = $_POST['address'];
+            $query = "UPDATE Users SET Address='".$address."' WHERE Email='".$email."'";
+            if(!mysqli_query($db, $query))
+            {
+                    echo "ERROR: Could not update";
+            }
+    }
+    if(!empty($_POST['state']))
+    {
+            $state = $_POST['state'];
+            $query = "UPDATE Users SET State='".$state."' WHERE Email='".$email."'";
+            if(!mysqli_query($db, $query))
+            {
+                    echo "ERROR: Could not update";
+            }
+    }
+
+    header('Location: accountInfo.php');
+
+  }
 ?>
 
 <html lang="en">
@@ -43,9 +73,9 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </h1>
         </div>
 
+        <form method="post">
         <div class="container">
           <div class="main-body">
-          
                 <div class="row gutters-sm">
                   <div class="col-md-4 mb-3">
                     <div class="card">
@@ -54,11 +84,6 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                           <img src="../Images/default_profile_pic.jpg" alt="Admin" class="rounded-circle" width="150">
                           <div class="mt-3">
                             <h4> <?php echo $Fname." ".$Lname?> </h4>
-                            <button class="btn btn-primary">
-                              <a href="editProfile.php" style="color:white">
-                                Edit Profile
-                              </a>
-                            </button>
                           </div>
                         </div>
                       </div>
@@ -81,7 +106,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Email</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            <?php echo $Email ?>
+                               <?php echo $Email ?>
                           </div>
                         </div>
                         <hr>
@@ -90,7 +115,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Phone</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            <?php echo $Phone ?>
+                                <label for="Phone" class="sr-only">
+                                        New Phone
+                                </label>
+                                <input type="text" name="phone" class="form-control" placeholder="New Phone">
+
                           </div>
                         </div>
                         <hr>
@@ -99,7 +128,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">Address</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            <?php echo $Address ?>
+                                <label for="Address" class="sr-only">
+                                        New Address
+                                </label>
+                                <input type="text" name="address" class="form-control" placeholder="New Address">
+
                           </div>
                         </div>
                         <hr>
@@ -108,18 +141,24 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             <h6 class="mb-0">State</h6>
                           </div>
                           <div class="col-sm-9 text-secondary">
-                            <?php echo $State ?>
+                                <label for="State" class="sr-only">
+                                        New State
+                                </label>
+                                <input type="text" name="state" class="form-control" placeholder="New State">
                           </div>
                         </div>
                       </div>
                     </div>
-
+                    <button formaction="" class="btn btn-lg btn-primary btn-block" type="submit">
+                        Update Info
+                    </button>
                     </div>
                   </div>
                 </div>
           </div>
         </div>
-        
+        </form>
+
     </div>
 </body>
 </html>

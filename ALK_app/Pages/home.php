@@ -10,15 +10,35 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include("connect.php");
   include("funcs.php");
 
-  function setCarID($carID)
+  if(isset($_SESSION['carID']))
   {
-          $_SESSION['carID'] = $carID;
+    unset($_SESSION['carID'])
+  }
+
+  function setSlot($slot)
+  {
+          $_SESSION['slot'] = $slot;
           header('Location: regOrUnlock.php');
   }
 
-  if(isset($_GET['run']))
+  if(isset($_GET['run1']))
   {
-          setCarID($carID);
+          setSlot(1);
+  }
+
+  if(isset($_GET['run2']))
+  {
+          setSlot(2);
+  }
+
+  if(isset($_GET['run3']))
+  {
+          setSlot(3);
+  }
+
+  if(isset($_GET['run4']))
+  {
+          setSlot(4);
   }
 
 
@@ -43,7 +63,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </h1>
         </div>
         <div class="row row-cols-1 row-cols-xs-3 mb-3 text-center">
-          <a href='home.php?run=true?carID=1' style="color:black">  
+          <a href="home.php?run1=true" style="color:black">  
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -55,7 +75,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </a>
-          <a href='home.php?run=true?carID=2' style="color:black">
+          <a href="home.php?run2=true" style="color:black">
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -67,7 +87,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </a>
-          <a href='home.php?run=true?carID=3' style="color:black">
+          <a href="home.php?run3=true" style="color:black">
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -79,7 +99,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </a>
-          <a href='home.php?run=true?carID=4' style="color:black">
+          <a href="home.php?run4=true" style="color:black">
             <div class="col">
               <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">

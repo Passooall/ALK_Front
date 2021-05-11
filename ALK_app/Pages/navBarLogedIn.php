@@ -13,9 +13,6 @@
             <a class="nav-link" href="accountInfo.php">Account Info</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="registerVehicle.php">Register Vehicle</a>
-          </li>
-          <li class="nav-item">
               <a class="nav-link" href="logOut.php">Log Out</a>
           </li>
         </ul>

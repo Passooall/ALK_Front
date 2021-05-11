@@ -25,7 +25,7 @@
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">
-    <a href="home.php"> 
+    <a href="../../../index.html"> 
       <img class="mb-2 mr-2 nav-logo" src="../Images/ALK_Logo.png" href="../../../index.html">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
